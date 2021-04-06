@@ -1,4 +1,4 @@
-module bwastartup
+module yukbantu
 
 go 1.16
 
