@@ -71,3 +71,11 @@ func (h *userHandler) Login(c *gin.Context) {
 	// service search the relevant email using user repository
 	// matching the password
 }
+
+func CheckEmailAvailability(c *gin.Context) {
+	// get email input from user
+	// map the input to the input struct
+	// pass the input to the service
+	// service call the repository to check the email
+	// repository - db
+}
