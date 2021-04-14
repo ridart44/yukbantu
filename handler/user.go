@@ -1,5 +1,6 @@
 package handler
 
+// The handler is used to handling the request; this handler is used to handling user related request
 import (
 	"net/http"
 	"yukbantu/helper"
@@ -40,4 +41,13 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 	// map input from user to struct RegisterUserInput
 	// pass the struct as a service parameter
+}
+
+func (h *userHandler) Login(c *gin.Context) {
+	// user input (email & password)
+	// handler catch the input
+	// handler mapping user input to input struct
+	// struct input passing the service
+	// service search the relevant email using user repository
+	// matching the password
 }
