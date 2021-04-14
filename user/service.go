@@ -49,7 +49,7 @@ func (s *service) Login(input LoginInput) (User, error) {
 		return user, err
 	}
 	if user.ID == 0 {
-		return user, errors.New("Invalid Email/Password!")
+		return user, errors.New("Email not registered")
 
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(password))
