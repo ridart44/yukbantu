@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"yukbantu/auth"
 	"yukbantu/handler"
@@ -23,6 +24,15 @@ func main() {
 	userRepository := user.NewRepository(db)
 	userService := user.NewService(userRepository)
 	authService := auth.NewService()
+	token, err := authService.ValidateToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNX0.E2f-H68ae33jiQsV_7qkWUHaMgaZFgqscAIXABEUk9Q")
+	if err != nil {
+		fmt.Println("Error!")
+	}
+	if token.Valid {
+		fmt.Println("Token is Valid")
+	} else {
+		fmt.Println("Token is Invalid")
+	}
 
 	userHandler := handler.NewUserHandler(userService, authService)
 
