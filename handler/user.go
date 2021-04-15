@@ -2,6 +2,7 @@ package handler
 
 // The handler is used to handling the request; this handler is used to handling user related request
 import (
+	"fmt"
 	"net/http"
 	"yukbantu/helper"
 	"yukbantu/user"
@@ -120,7 +121,8 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-	path := "images/" + file.Filename
+	userID := 3
+	path := fmt.Sprintf("images/%d-%s", userID, file.Filename)
 	err = c.SaveUploadedFile(file, path)
 	if err != nil {
 		data := gin.H{"is_uploaded": false}
@@ -129,7 +131,7 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-	userID := 1
+
 	_, err = h.userService.SaveAvatar(userID, path)
 	if err != nil {
 		data := gin.H{"is_uploaded": false}
@@ -139,7 +141,7 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		return
 	}
 	data := gin.H{"is_uploaded": true}
-	response := helper.APIResponse("Avatar Image Successfully Uploaded", http.StatusOK, "error", data)
+	response := helper.APIResponse("Avatar Image Successfully Uploaded", http.StatusOK, "success", data)
 
 	c.JSON(http.StatusOK, response)
 
