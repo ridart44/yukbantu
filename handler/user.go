@@ -106,3 +106,10 @@ func (h *userHandler) CheckEmailAvailability(c *gin.Context) {
 	// service call the repository to check the email
 	// repository - db
 }
+
+func (h *userHandler) UploadAvatar(c *gin.Context) {
+	// image stored at "images/"
+	// service call repo
+	// repo get find data to update by ID
+	// repo update user data, store file location
+}
